@@ -1,0 +1,34 @@
+Latest twiki : https://twiki.cern.ch/twiki/bin/viewauth/CMS/BTagCommissioning2019
+
+
+The code which produces the histograms useful for commissioning is in:
+CommPlotProducer.C  
+CommPlotProducer.h  
+
+ -> add any new variable in the .h file (if it crashes, check the lenght of the vectors)
+ -> check the trigger list in .C  : in the passTrigger2016, passTrigger2017 function --> missing passTrigger2018 for the moment
+ -> check the eta Limit : EtaCut in the Loop function
+ -> check the muon selection in the .C : in the passPFMuonSelection function
+ -> check the WP in the .C : in the Loop function
+ -> check the cross-sections in the .C : in the SetXS function
+ -> modify the link in the .h to PhysicsTools/Utilities/interface/LumiReweightingStandAlone.h (needed for the PU reweighting)
+
+To run this code, use:
+runCode.C
+which calls one of the following executable codes (2 examples to cover different possibilities):
+exeCode.C
+exeCode2
+ 
+To display the histograms, use:
+DrawCommPlot.C
+as in 
+runPlotdata.C
+runPlotmc.C
+runPlotComm_jetht.C
+
+
+The roc curves can be produced with 
+DrawEfficiencyPlot.C 
+
+note: tdrstyle.C is needed in DrawCommPlot.C and in DrawEfficiencyPlot.C 
+
